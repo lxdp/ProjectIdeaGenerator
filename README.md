@@ -43,21 +43,28 @@ Before running this project, ensure you have:
 ### 1. Clone the repository
 
 git clone <repository-url>
-cd ProjectIdeaGenerator### 2. Backend Setup
+cd ProjectIdeaGenerator
+
+### 2. Backend Setup
 
 Create a Python virtual environment:
 sh
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activateInstall Python dependencies:
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
+Install Python dependencies:
 pip install -r requirements.txt
-pip install flask flask-cors flask-caching pydantic psycopg2-binary redis thefuzz sentence-transformers### 3. Frontend Setup
+pip install flask flask-cors flask-caching pydantic psycopg2-binary redis thefuzz sentence-transformers
+
+### 3. Frontend Setup
 
 Navigate to the frontend directory:
 
 cd frontend
 npm install
-cd ..### 4. Database Setup
+cd ..
+
+### 4. Database Setup
 
 Create a PostgreSQL database and table:
 
@@ -69,7 +76,9 @@ CREATE TABLE history (
     parameters JSONB NOT NULL,
     project_list JSONB NOT NULL,
     evidence JSONB
-);### 5. Environment Variables
+);
+
+### 5. Environment Variables
 
 Create a `.env` file in the root directory:
 v
@@ -102,11 +111,15 @@ AZURE_OPENAI_API_VERSION=2024-02-15-preview
 AZURE_OPENAI_DEPLOYMENT_NAME=your-deployment-name
 
 # OpenWebNinja API
-JOB_LISTINGS_API_KEY=your-api-key## Running the Application
+JOB_LISTINGS_API_KEY=your-api-key
+
+## Running the Application
 
 ### Start Redis
 sh
-redis-server### Start PostgreSQL
+redis-server
+
+### Start PostgreSQL
 
 Ensure PostgreSQL is running on your system.
 

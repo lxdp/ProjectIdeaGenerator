@@ -1,10 +1,12 @@
 from typing import List
 
-from pydantic import RootModel
+from pydantic import ConfigDict, RootModel
 
 from src.schemas.base import _BaseModel
 
 class Match(_BaseModel):
+    model_config = ConfigDict(frozen=True)
+    
     project_title: str
     project_achievement: str
     job_title: str

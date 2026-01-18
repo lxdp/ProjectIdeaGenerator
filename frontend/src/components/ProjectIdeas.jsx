@@ -12,14 +12,14 @@ function ProjectIdeas() {
     const [deleteConfirmation, setDeleteConfirmation] = useState(null);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-    const hasFetchedRef = useRef(false)
+    const hasFetchedRef = useRef(null);
 
     const blocker = useBlocker(({nextLocation}) => (
         nextLocation.pathname === "/"
     ))
 
     useEffect(() => {
-        if (hasFetchedRef.current) {
+        if (hasFetchedRef.current === jobSearchId) {
             return;
         }
 
@@ -30,7 +30,7 @@ function ProjectIdeas() {
             return
         }
 
-        hasFetchedRef.current = true;
+        hasFetchedRef.current = jobSearchId;
 
         (async () => {
             try {
@@ -50,15 +50,11 @@ function ProjectIdeas() {
             } catch (err) {
                 console.error('Error fetching project ideas:', err);
                 setError(err);
-                hasFetchedRef.current = false;
+                hasFetchedRef.current = null;
             }
         })();
-
-        return () => {
-            hasFetchedRef.current = false;
-        };
         
-    }, [jobSearchId]);
+    }, [jobSearchId, navigate]);
 
     useEffect(() => {
         (async () => {

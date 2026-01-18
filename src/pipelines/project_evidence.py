@@ -33,13 +33,14 @@ class ProjectEvidence():
         """
 
         all_matches = []
-        print(self.ux_info)
         for project in self.ux_info["project_list"]["projects"]:
             for j_listing in self.ux_info["evidence"]:
                 matches = self.parse_project_evidence(project, j_listing)
                 all_matches.extend(matches)
         
-        return ProjectListRelevance(root=all_matches)
+        removed_duplicates = set(all_matches)
+        
+        return ProjectListRelevance(root=list(removed_duplicates))
 
     def parse_project_evidence(self, 
         project: Dict[str, Any], evidence: Dict[str, Any]) -> List[Match]:

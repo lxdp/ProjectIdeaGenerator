@@ -50,6 +50,18 @@ function SavedProjectEvidence() {
     if (groupedByProject.length === 0) {
         return (
             <div className={styles.container}>
+                <button 
+                    className={styles.backBtn} 
+                    onClick={() => navigate(`/saved-project/${requestedDataId}`)}
+                >
+                    ← Back to Projects
+                </button>
+
+                <header className={styles.header}>
+                    <h1 className={styles.title}>Market Evidence</h1>
+                    <p className={styles.subtitle}>Real job listings that validate: {projectTitle}</p>
+                </header>
+
                 <div className={styles.empty}>No evidence found for this project</div>
             </div>
         );
